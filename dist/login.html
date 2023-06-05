@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+
+    <video autoplay muted loop id="myVideo">
+      <source src="images/bg2.mp4" type="video/mp4">
+    </video>
+    
+    <title>Login - noiSENSOR</title>
+
+     <!-- ===== Iconscout CSS ===== -->
+     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+      <link rel="stylesheet" href="assets/css/signin.css">
+        
+  
+        <script src="https://kit.fontawesome.com/334c45a40c.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    
+      </head>
+
+    <body>
+        
+    <div class="container">
+            <div class="form login">
+                <span class="title">Login</span>
+
+                <form action="#" class="sign-in-form">
+                  <div class="input-field">
+                      <input type="text" name="email" id="login_email" class="form-input" placeholder="Email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" />
+                      <i class="uil uil-envelope icon"></i>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" id="login_password" name="password" class="form-input" placeholder="Password" />
+                    <i class="uil uil-lock icon"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+                <div class="input-field button">
+                    <input type="button" value="Login" id="login" name="login" class="btn solid" />
+                </div>
+
+                  
+                <div class="container">
+                <div class="login-signup">
+                  <span class="text">Not a member?
+                      <a href="register.html" class="text signup-link">Signup Now</a>
+                  </span><br>
+                  <hr style="margin-top: 15px; margin-bottom: 5px; border-top: 1px solid #8c8b8b; width: 93%">
+
+                  <p class="social-text">Sign In with</p>
+                  <div class="social-media">
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-facebook-f" id="facebookSignIn"></i>
+                      </a>
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-google" id="googleSignIn"></i>
+                      </a>
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-twitter" id="facebook-sign-in"></i>
+                      </a>
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-github" id="google-sign-in"></i>
+                      </a>
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-microsoft" id="facebook-sign-in"></i>
+                      </a>
+                      <a href="#" class="social-icon">
+                          <i class="fab fa-yahoo" id="google-sign-in"></i>
+                      </a>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+</body>
+</html>
+
+<script type="module">
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { getAuth, 
+  GoogleAuthProvider,
+  FacebookAuthProvider, 
+  signInWithRedirect, 
+  getRedirectResult,
+  signInWithPopup,
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged  } 
+  from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAXIQ1r-JR7HxOruM_h888o1wD0iNLrOLI",
+      authDomain: "noise-level-bc62c.firebaseapp.com",
+      projectId: "noise-level-bc62c",
+      storageBucket: "noise-level-bc62c.appspot.com",
+      messagingSenderId: "518482570617",
+      appId: "1:518482570617:web:d38ec9553a6670c57613a8",
+      measurementId: "G-V60YLL36CY"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);    
+    const auth = getAuth(app);
+    console.log(app);
+
+    // Initialize the Google provider object
+    const googleProvider = new GoogleAuthProvider();
+
+    // Initialize the Facebook provider object
+    const facebookProvider = new FacebookAuthProvider();
+
+    // Event listener for Google sign-in
+    document.getElementById("googleSignIn").addEventListener("click", function() {
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                // You can retrieve the user information from result.user
+                // If needed, you can also get the Google OAuth token: result.credential.accessToken
+                console.log(result.user);
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    });
+
+    // Event listener for Facebook sign-in
+    document.getElementById("facebookSignIn").addEventListener("click", function() {
+        signInWithPopup(auth, facebookProvider)
+            .then((result) => {
+                // You can retrieve the user information from result.user
+                // If needed, you can also get the Facebook OAuth token: result.credential.accessToken
+                console.log(result.user);
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    });
+
+    //----- Login code start	  
+    document.getElementById("login").addEventListener("click", function() {
+      var email =  document.getElementById("login_email").value;
+      var password = document.getElementById("login_password").value;
+    
+      signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        (Swal.fire({
+          icon: 'success',
+          title: 'Logged In Successfully',
+          text: 'You will Be Redirected Shortly',
+          }));
+          setTimeout(function () {
+          window.location.href = "dashboard.html"; //will redirect to your page
+          }, 1000); //will call the function after 3 secs.
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          (Swal.fire({
+          icon: 'error',
+          title: 'An Error Has Occured',
+          text: ''+error,
+          }));;
+        });		  		  
+      });
+      //----- End
+
+</script>

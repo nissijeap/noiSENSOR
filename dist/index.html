@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to noiSENSOR</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="assets1/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="assets1/images/hero-banner.png">
+  <link rel="preload" as="image" href="assets1/images/hero-circle-one.png">
+  <link rel="preload" as="image" href="assets1/images/hero-circle-two.png">
+  <link rel="preload" as="image" href="assets1/images/hero-circle-three.png">
+
+      <!-- Chart.js library -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#home" class="logo">
+        <img src="images/logo-full.png" width="170" height="53" alt="gaming console">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+
+          <li>
+          <strong><a href="#home" class="navbar-link active" data-nav-link>Home</a></strong>
+          </li>
+
+          <li>
+          <strong><a href="#about" class="navbar-link" data-nav-link>About Us</a></strong>
+          </li>
+
+          <li>
+          <strong><a href="#class" class="navbar-link" data-nav-link>Noise Level</a></strong>
+          </li>
+
+          <li>
+          <strong><a href="#blog" class="navbar-link" data-nav-link>News</a></strong>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    <strong><a target="_blank" href="login.html" href="" class="btn btn-secondary" style="font-weight: 500px;">Sign In</a></strong>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #MAIN
+      -->
+
+      <section class="section hero bg-dark has-after has-bg-image" id="home" aria-label="hero" data-section
+        style="background-image: url('images/bg6.png');
+        background-size: cover;
+        background-repeat: repeat;">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <h1 class="h1 hero-title">Noise Level Monitoring and Warning</h1>
+
+            <p class="section-text" style="color: hsl(34, 100%, 45%);">
+              Silence amplified. Noise detected and monitored.
+              Start empowering tranquility in a noisy world.
+            </p>
+
+            <!--<a href="#" class="btn btn-primary">Get Started</a>-->
+
+          </div>
+
+          <div class="hero-banner">
+
+            <img src="assets1/images/hero-banner.png" width="660" height="753" alt="hero banner" class="w-100" style="width: 90%; margin-top: 30px; margin-left: 90px;">
+
+            <img src="assets1/images/hero-circle-one.png" width="777" height="777" aria-hidden="true" alt=""
+              class="circle circle-1">
+              <img src="assets1/images/hero-circle-two.png" width="777" height="777" aria-hidden="true" alt=""
+              class="circle circle-2">
+            <img src="assets1/images/hero-circle-three.png" width="777" height="777" aria-hidden="true" alt=""
+              class="circle circle-2">
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+          
+
+          <div class="about-banner has-after">
+            <img src="assets1/images/about-banner.png" width="660" height="648" loading="lazy" alt="about banner"
+              class="w-100" style="width: 110%; margin-left: -30px;">
+
+            <img src="assets1/images/about-circle-one.png" width="660" height="534" loading="lazy" aria-hidden="true"
+              alt="" class="circle circle-1">
+            <img src="assets1/images/about-circle-two.png" width="660" height="534" loading="lazy" aria-hidden="true"
+              alt="" class="circle circle-2">
+
+            <img src="assets1/images/fitness.png" width="650" height="154" loading="lazy" alt="fitness"
+              class="abs-img w-100">
+          </div>
+
+          <div class="about-content">
+
+            <p class="section-subtitle" style="font-family: 'Blanka', sans-serif;">About Us</p>
+
+            <h2 class="h2 section-title" >Welcome to noiSENSOR</h2>
+
+            <p class="section-text">
+              The ultimate solution for a comprehensive noise level monitoring and warning, ensuring a quieter and more peaceful environment for all. This offers real-time data insights and customizable alerts, allowing you to proactively manage noise levels and enhance the quality of life in any setting.
+
+            <p class="section-text">
+              Step into a world of tranquility with NoiSENSOR. Experience the power of precise noise control to create a harmonious and serene atmosphere. 
+            </p>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #VIDEO
+      -->
+
+      <section class="section video" aria-label="video">
+        <div class="container">
+          <div class="video-card has-before">
+            <video class="video-element" autoplay loop muted>
+              <source src="images/sound.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </section>
+      
+      
+
+
+
+      <!-- 
+        - #LEVELS
+      -->
+
+      <section class="section class bg-dark has-bg-image" id="class" aria-label="class"
+        style="background-image: url('images/bg6.png');
+        background-size: cover;
+        background-repeat: repeat;">
+        <div class="container">
+
+          <p class="section-subtitle" style="font-family: 'Blanka', sans-serif;">Sound Range</p>
+
+          <h2 class="h2 section-title text-center">Noise Levels in Decibel Scale</h2>
+
+          <ul class="class-list has-scrollbar">
+
+            <li class="scrollbar-item">
+              <div class="class-card">
+
+                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
+                  <img src="assets1/images/class-1.png" width="416" height="240" loading="lazy" alt="The Fitness Pack"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="title-wrapper">
+                    <img src="assets1/images/class-icon-1.png" width="52" height="52" aria-hidden="true" alt=""
+                      class="title-icon">
+
+                    <h3 class="h3">
+                      <a href="#" class="card-title">Quiet</a>
+                    </h3>
+                  </div>
+
+                  <p class="card-text">
+                    The environment is generally very peaceful and calm. People can experience a serene atmosphere with minimal or no background noise. It is ideal for activities that require concentration, relaxation, or a tranquil environment.
+                  </p>
+
+                  <div class="card-progress">
+
+                    <div class="progress-wrapper">
+                      <p class="progress-label">Noise Level</p>
+
+                      <span class="progress-value">0 - 30 dB</span>
+                    </div>
+
+                    <div class="progress-bg">
+                      <div class="progress-bar" style="width: 30%; background: blue"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="class-card">
+
+                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
+                  <img src="assets1/images/class-2.png" width="416" height="240" loading="lazy" alt="The Fitness Pack"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="title-wrapper">
+                    <img src="assets1/images/class-icon-2.png" width="52" height="52" aria-hidden="true" alt=""
+                      class="title-icon">
+
+                    <h3 class="h3">
+                      <a href="#" class="card-title">Normal</a>
+                    </h3>
+                  </div>
+
+                  <p class="card-text">
+                    Typical everyday sounds such as conversation, household appliances, moderate traffic noise, or background music.  It is usually not too distracting and allows for regular communication and work without significant disturbance.
+                  </p>
+
+                  <div class="card-progress">
+
+                    <div class="progress-wrapper">
+                      <p class="progress-label">Noise Level</p>
+
+                      <span class="progress-value">36 - 60 dB</span>
+                    </div>
+
+                    <div class="progress-bg">
+                      <div class="progress-bar" style="width: 60%; background: green"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="class-card">
+
+                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
+                  <img src="assets1/images/class-3.png" width="416" height="240" loading="lazy" alt="The Fitness Pack"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="title-wrapper">
+                    <img src="assets1/images/class-icon-3.png" width="52" height="52" aria-hidden="true" alt=""
+                      class="title-icon">
+
+                    <h3 class="h3">
+                      <a href="#" class="card-title">Moderate</a>
+                    </h3>
+                  </div>
+
+                  <p class="card-text">
+                    This level of noise is noticeable and may cause a moderate amount of disturbance. It can include sounds like a crowded restaurant or a bustling office. While it may not be overwhelmingly loud, it can make it harder to concentrate.
+                  </p>
+
+                  <div class="card-progress">
+
+                    <div class="progress-wrapper">
+                      <p class="progress-label">Nosie Level</p>
+
+                      <span class="progress-value">61 - 80 dB</span>
+                    </div>
+
+                    <div class="progress-bg">
+                      <div class="progress-bar" style="width: 80%"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="class-card">
+
+                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
+                  <img src="assets1/images/class-4.png" width="416" height="240" loading="lazy" alt="The Fitness Pack"
+                    class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="title-wrapper">
+                    <img src="assets1/images/class-icon-4.png" width="52" height="52" aria-hidden="true" alt=""
+                      class="title-icon">
+
+                    <h3 class="h3">
+                      <a href="#" class="card-title">High</a>
+                    </h3>
+                  </div>
+
+                  <p class="card-text">
+                    This level of noise is loud and can be potentially harmful to hearing if prolonged exposure occurs. It includes construction sites or loud concerts. It is important to take precautions to prevent hearing damage and discomfort.
+                  </p>
+
+                  <div class="card-progress">
+
+                    <div class="progress-wrapper">
+                      <p class="progress-label">Noise Level</p>
+
+                      <span class="progress-value">above 80 dB</span>
+                    </div>
+
+                    <div class="progress-bg">
+                      <div class="progress-bar" style="width: 100%; background: red"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+      <!-- 
+        - #NEWS
+      -->
+
+      <section class="section blog" id="blog" aria-label="blog">
+        <div class="container">
+
+          <p class="section-subtitle" style="font-family: 'Blanka', sans-serif;">News</p>
+
+          <h2 class="h2 section-title text-center">Latest Headlines</h2>
+
+          <ul class="blog-list has-scrollbar">
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="assets1/images/blog1.png" width="440" height="270" loading="lazy"
+                    alt="Going to the gym for the first time" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">2 April 2021</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a target="_blank" href="https://conventuslaw.com/report/philippines-when-noise-is-a-nuisance/" class="card-title">PH - When Noise Is A Nuisance</a>
+                  </h3>
+
+                  <p class="card-text">
+                    It has been said that noise is the most impertinent of all forms of interruption. Worse, when noise disturbance rises 
+                    to the level of noise pollution, it becomes just like any other type of pollution, such as air or water pollution...
+                  </p>
+
+                  <a target="_blank" href="https://conventuslaw.com/report/philippines-when-noise-is-a-nuisance/" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="assets1/images/blog2.png" width="440" height="270" loading="lazy"
+                    alt="Parturient accumsan cacus pulvinar magna" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">28 January 2023</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a target="_blank" href="https://www.philstar.com/opinion/2023/01/28/2240726/noise-pollution" class="card-title">Ongoing Noise Pollution</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Another pet peeve is when people take calls and talk loudly in public. Where has etiquette gone? 
+                    Now imagine 100 million people on their gadgets, taking calls, watching YouTube videos and otherwise entertaining themselves without...
+                  </p>
+
+                  <a target="_blank" href="https://www.philstar.com/opinion/2023/01/28/2240726/noise-pollution" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="assets1/images/blog3.png" width="440" height="270" loading="lazy"
+                    alt="Risus purus namien parturient accumsan cacus" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">23 September 2021</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a target="_blank" href="https://mb.com.ph/2021/09/23/noise-pollution-can-negatively-affect-plants-and-animals-even-after-the-noise-has-stopped/" class="card-title">Negative Effects of Noise Pollution</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Noise pollution has long been found to have an impact on animals. They say that birds sing at higher frequencies, 
+                    bats have difficulty finding prey, frogs have trouble finding partners, and whales speak louder to communicate with...
+                  </p>
+
+                  <a target="_blank" href="https://mb.com.ph/2021/09/23/noise-pollution-can-negatively-affect-plants-and-animals-even-after-the-noise-has-stopped/" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" id="footer">
+    <div class="section footer-top bg-dark has-bg-image" style="background-image: url('images/bg6.png');
+                  background-size: cover;
+                  background-repeat: repeat;">
+      <div class="container">
+        <div class="footer-brand">
+          <div class="wrapper">
+            <a href="#home" class="logo">
+              <img src="images/logo-full.png" width="500" height="53" alt="gaming console">
+            </a>
+            <div class="footer-brand-text">
+              <p>
+                Unlock a world of tranquility with noiSENSOR, your ultimate companion for noise level monitoring and a gateway to a quieter, more peaceful tomorrow.
+              </p><br>
+              <p>
+                Step into a world of peace and serenity, where noise fades away and harmony takes center stage. Join the noiSENSOR revolution and redefine your acoustic landscape starting today!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2023 noiSENSOR. All Rights Reserved By <a href="https://github.com/nissijeap/noiSENSOR" class="copyright-link">Paglinawan and Gerzon.</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="assets1/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

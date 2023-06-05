@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, intial-scale=1.0">
+  <title> Dashboard - Gaming Consoles  </title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+
+  <!-- Chart.js library -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Bootstrap and Icons -->
+      <!-- ====== Delete Modal ======= -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <!-- ====== Edit Modal ======= -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+  <!-- ====== ionicons ======= -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Data From Firebase to DataTables -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Include DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+  <!----Style Sheet---->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+  <style>
+    body {
+      background-image: url('images/bg6.png');
+      background-size: cover;
+      background-repeat: repeat;
+    }
+    </style>
+
+ <!-- =============== Navigation ================ -->
+ <div class="container">
+  <div class="navigation">
+
+  <ul>
+    <li>
+        <a href="#">
+          <img src="images/logo-full.png" style="margin: 20px 20px" width="80%" height="80%">
+            <!--<span class="icon">
+                <ion-icon name="game-controller" style="color: hsl(34, 100%, 51%);"></ion-icon>
+            </span>
+            <strong><span class="title" style="color: hsl(34, 100%, 51%);">Game Consoles</span></strong>-->
+        </a>
+    </li>
+
+    <li>
+        <a href="dashboard.html">
+            <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="data.html">
+            <span class="icon">
+                <ion-icon name="server-outline"></ion-icon>
+            </span>
+            <span class="title">Records</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="chart.html">
+            <span class="icon">
+                <ion-icon name="stats-chart-outline"></ion-icon>
+            </span>
+            <span class="title">Visualizations</span>
+        </a>
+    </li>
+
+    <li>
+      <a href="login.html">
+          <span class="icon" style="align-self: end">
+              <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sign Out</span>
+      </a>
+  </li>  
+  
+</ul>
+</div>
+
+<!-- ========================= Main ==================== -->
+<div class="main">
+  <div class="topbar">
+      <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+      </div>
+  </div>
+
+<!-- ================ Page Content ================= -->
+<div class="details">
+  <div class="recentOrders">
+      <div class="cardHeader">
+          <h2 style="color: hsl(34, 100%, 51%);">Dashboard</h2>
+      </div>
+
+ <!-- ======================= Cards ================== -->
+ <div class="cardBox">
+     <div class="card">
+      <div>
+        <div class="numbers" id="totalQuiet"></div>
+        <a href="data.html" class="cardName">
+          <div class="cardName">Quiet Level</div>
+        </a>
+      </div>
+
+      <div class="iconBx">
+        <ion-icon name="volume-off"></ion-icon>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <div>
+        <div class="numbers" id="totalNormal"></div>
+        <a href="data.html" class="cardName">
+        <div class="cardName">Normal Level</div>
+      </a>
+      </div>
+
+      <div class="iconBx">
+        <ion-icon name="volume-low"></ion-icon>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="numbers" id="totalModerate"></div>
+        <a href="data.html" class="cardName">
+        <div class="cardName">Moderate Level</div>
+      </a>
+      </div>
+
+      <div class="iconBx">
+        <ion-icon name="volume-medium"></ion-icon>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="numbers" id="totalHigh"></div>
+        <a href="data.html" class="cardName">
+          <div class="cardName">High Level</div>
+        </a>
+      </div>
+
+      <div class="iconBx">
+        <ion-icon name="volume-high"></ion-icon>
+      </div>
+    </div>
+</div>
+
+<!-- ================ Add Charts JS ================= -->
+
+<div class="dashchartsBx">
+
+  <div class="charts">
+      <h2 style="color: hsl(34, 100%, 51%)">Line Chart</h2>
+      <canvas id="lineChart"></canvas>
+    </div>
+    
+    <div class="charts">
+      <h2 style="color: hsl(34, 100%, 51%);">Bubble Chart</h2>
+      <canvas id="bubbleChart" style="max-height: 80%"></canvas>
+    </div>
+
+    <div class="charts">
+      <h2 style="color: hsl(34, 100%, 51%)">Bar Chart</h2>
+      <canvas id="barChart"></canvas>
+    </div>
+
+  <div class="charts">
+    <h2 style="color: hsl(34, 100%, 51%);">Area Chart</h2>
+    <canvas id="areaChart"></canvas>
+  </div>
+
+ 
+</div>
+
+
+
+<!-- ================ Records ================= -->
+<br><br>
+      <div class="cardHeader">
+          <h2 style="color: hsl(34, 100%, 51%);">Sound Data</h2>
+      </div>
+
+      <table id="myTable" class="">
+        <thead>
+          <tr>
+            <td>No. </td>
+            <td>Sound dB</td>
+            <td>Noise Level </td>
+            <td>Signal</td>
+            <td>Date Time</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+
+ <!-- Edit Modal -->
+ <div id="edit-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: 1000; font-size:larger; color: hsl(34, 100%, 51%);">Edit Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          id="edit-close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group col-md-12">
+            <label for="Sound" class="form-label" style="color: black" required>Sound dB:</label>
+            <input type="number" class="form-control" id="soundInput" required>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="Level" class="form-label" style="color: black" required>Noise Level:</label>
+              <input type="text" class="form-control" id="levelInput" required>
+              <span class="input-group-text"></span>
+            </div>
+          
+          <div class="form-group col-md-12">
+            <label for="LedColor" class="form-label" style="color: black" required>Signal:</label>
+              <input type="text" class="form-control" id="ledColorInput" required>
+              <span class="input-group-text"></span>
+          </div>
+
+          <!--<div class="form-group col-md-5">
+              <label for="Timestamp" class="form-label">Current Date and Time</label>
+              <input type="text" class="form-control" id="CurrentTimestamp" readonly>
+          </div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          id="edit-close-button" style=" background: linear-gradient(to right, #EA4444, #FF0000);">Close</button>
+        <button type="button" class="btn btn-primary" id="update-button" style="background: linear-gradient(to right, #2EC506, #118B0B);">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- ======= Scripts ====== -->
+<script src="assets/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+ <!-- Sweet Alert -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <!-- firebase js -->
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
+  import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js';
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithRedirect,
+    getRedirectResult,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut
+  }
+    from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    connectFirestoreEmulator,
+    query,
+    getDocs,
+    getDoc,
+    updateDoc,
+    setDoc,
+    doc,
+    onSnapshot,
+    deleteDoc,
+    orderBy
+  } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAXIQ1r-JR7HxOruM_h888o1wD0iNLrOLI",
+      authDomain: "noise-level-bc62c.firebaseapp.com",
+      projectId: "noise-level-bc62c",
+      storageBucket: "noise-level-bc62c.appspot.com",
+      messagingSenderId: "518482570617",
+      appId: "1:518482570617:web:d38ec9553a6670c57613a8",
+      measurementId: "G-V60YLL36CY"
+    };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+      //Firestore
+      const db = getFirestore(app);
+  
+      //DataTables
+      firebase.initializeApp(firebaseConfig);
+      const db2 = firebase.firestore();  // Function for Database Firestore 
+
+
+    //Color Mapping
+    const levelColorMapping = {
+      "Quiet": 'rgba(0, 0, 255, 0.5)',  // Blue
+      "Normal": 'rgba(0, 255, 0, 0.5)', // Green
+      "Moderate": 'rgba(255, 255, 0, 0.5)', // Yellow
+      "High": 'rgba(255, 0, 0, 0.5)' // Red
+    };
+
+    const signalColorMapping = {
+      "Blue": 'rgba(0, 0, 255, 0.5)',  // Blue
+      "Green": 'rgba(0, 255, 0, 0.5)', // Green
+      "Yellow": 'rgba(255, 255, 0, 0.5)', // Yellow
+      "Red": 'rgba(255, 0, 0, 0.5)' // Red
+    };
+
+
+// line graph
+const ctxLine = document.getElementById('lineChart').getContext('2d');
+let chartLine;
+
+db2.collection('SoundData')
+  .orderBy('Timestamp', 'desc')
+  .limit(5)
+  .onSnapshot((querySnapshot) => {
+    const labels = [];
+    const SoundDataLevels = {};
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const date = moment(data['Timestamp'].toDate()).format('hh:mmA');
+      labels.push(date);
+
+      const level = data["Level"];
+      const sound = parseFloat(data["Sound"]);
+
+      if (!(level in SoundDataLevels)) {
+        SoundDataLevels[level] = { sounds: [] };
+      }
+      SoundDataLevels[level].sounds.push(sound);
+    });
+
+    const datasets = [];
+    for (const level in SoundDataLevels) {
+      if (SoundDataLevels.hasOwnProperty(level)) {
+        datasets.push({
+          label: level,
+          data: SoundDataLevels[level].sounds,
+          fill: false,
+          backgroundColor: levelColorMapping[level],
+          borderColor: levelColorMapping[level],
+          borderWidth: 2,
+          cubicInterpolationMode: 'monotone' // Add this property for smooth curve
+        });
+      }
+    }
+
+    const SoundData = {
+      labels: labels,
+      datasets: datasets
+    };
+
+    if (chartLine) {
+      chartLine.destroy();
+    }
+    
+    chartLine = new Chart(ctxLine, {
+      type: 'line',
+      data: SoundData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // if you want the chart to be fully responsive to its parent container
+        animation: {
+        duration: 1000, // general animation time
+        easing: 'easeOutBounce', // an animation easing function
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Noise Levels over Time',
+            color: 'white',
+            font: {
+              size: 20, // Increase the font size of the labels
+              family: 'Cloud'
+            }
+          },
+          legend: {
+            labels: {
+              color: '#FFA500', // Changing the label color to yellow orange
+              font: {
+                size: 15, // Increase the font size of the labels
+                family: 'Cloud'
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Time',
+              color: '#FFA500', // Change the color to yellow orange
+              font: {
+                size: 15, // Change the font size to whatever you want
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white', // Change the color to yellow orange
+              font: {
+                size: 10, // Change the font size to whatever you want
+                family: 'Cloud'
+              }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            title: {
+              display: true,
+              text: 'Sound Level (dB)',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              stepSize: 10,
+              color: 'white', // Change the color to yellow orange
+              font: {
+                size: 15, // Change the font size to whatever you want
+                family: 'Cloud'
+              }
+            },
+          }
+        }
+      }
+    });
+  }, (error) => {
+      console.error("Error retrieving data from Firestore: ", error);
+  });
+
+// Bubble Chart
+const ctxBubble = document.getElementById('bubbleChart').getContext('2d');
+let chartBubble;
+
+db2.collection('SoundData')
+  .orderBy('Timestamp', 'desc')
+  //.limit(20)
+  .onSnapshot((querySnapshot) => {
+    const SoundDataLevels = {};
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const timestamp = data['Timestamp'].toDate();
+      const formattedTimestamp = moment(timestamp).format('MM/DD hh:mm A');
+      const level = data["Level"];
+      const sound = parseFloat(data["Sound"]);
+
+      // Exclude "undefined" field
+      if (level === undefined || level === "undefined") return;
+
+      if (!(level in SoundDataLevels)) {
+        SoundDataLevels[level] = { timestamps: [], sounds: [] };
+      }
+
+      SoundDataLevels[level].timestamps.push(formattedTimestamp);
+      SoundDataLevels[level].sounds.push(sound);
+    });
+
+    const datasets = [];
+    for (const level in SoundDataLevels) {
+      if (SoundDataLevels.hasOwnProperty(level)) {
+        datasets.push({
+          label: level,
+          data: SoundDataLevels[level].sounds.map((sound, i) => ({
+            x: sound,
+            y: sound,
+            r: 30 // Change this to adjust the bubble size; could be 10
+          })),
+          backgroundColor: levelColorMapping[level],
+          borderColor: levelColorMapping[level],
+          borderWidth: 1
+        });
+      }
+    }
+
+    const bubbleData = {
+      datasets: datasets
+    };
+
+    if (chartBubble) {
+      chartBubble.destroy();
+    }
+
+    chartBubble = new Chart(ctxBubble, {
+      type: 'bubble',
+      data: bubbleData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1000,
+          easing: 'easeOutBounce',
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Noise Levels and Sound dB',
+            color: 'white',
+            font: {
+              size: 20,
+              family: 'Cloud'
+            }
+          },
+          legend: {
+            labels: {
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            }
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Noise Level',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 12,
+                family: 'Cloud'
+              }
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Sound Level (dB)',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 12,
+                family: 'Cloud'
+              }
+            }
+          }
+        }
+      }
+    });
+  }, (error) => {
+    console.error("Error retrieving data from Firestore: ", error);
+  });
+
+// bar Chart
+const ctxBar = document.getElementById('barChart').getContext('2d');
+let chartBar;
+
+db2.collection('SoundData')
+  .orderBy('Timestamp', 'desc')
+  .onSnapshot((querySnapshot) => {
+    const SoundDataLevels = {};
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const level = data["Level"];
+
+      // Exclude "undefined" field
+      if (level === undefined || level === "undefined") return;
+
+      if (!(level in SoundDataLevels)) {
+        SoundDataLevels[level] = 0;
+      }
+      SoundDataLevels[level]++;
+    });
+
+    const dbLabels = Object.keys(SoundDataLevels);
+    const dbData = Object.values(SoundDataLevels);
+    const dbColors = dbLabels.map(level => levelColorMapping[level]);
+
+    const barData = {
+      labels: dbLabels,
+      datasets: [
+        {
+          data: dbData,
+          backgroundColor: dbColors,
+          borderWidth: 0
+        }
+      ]
+    };
+
+    if (chartBar) {
+      chartBar.destroy();
+    }
+
+    chartBar = new Chart(ctxBar, {
+      type: 'bar',
+      data: barData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1000,
+          easing: 'easeOutBounce',
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Distribution of Noise Levels',
+            color: 'white',
+            font: {
+              size: 20,
+              family: 'Cloud'
+            }
+          },
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Noise Level',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 12,
+                family: 'Cloud'
+              }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            title: {
+              display: true,
+              text: 'Count',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              stepSize: 10,
+              color: 'white',
+              font: {
+                size: 12,
+                family: 'Cloud'
+              }
+            }
+          }
+        }
+      }
+    });
+  }, (error) => {
+    console.error("Error retrieving data from Firestore: ", error);
+  });
+
+
+//area chart 
+const ctxArea = document.getElementById('areaChart').getContext('2d');
+let chartArea;
+
+db2.collection('SoundData')
+  .orderBy('Timestamp', 'desc')
+  .limit(5)
+  .onSnapshot((querySnapshot) => {
+    const labels = [];
+    const SoundDataLevels = {};
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const date = moment(data['Timestamp'].toDate()).format('hh:mmA');
+      labels.push(date);
+
+      const level = data["LedColor"];
+      const sound = parseFloat(data["Sound"]);
+
+      if (!(level in SoundDataLevels)) {
+        SoundDataLevels[level] = { sounds: [] };
+      }
+      SoundDataLevels[level].sounds.push(sound);
+    });
+
+    const datasets = [];
+    for (const level in SoundDataLevels) {
+      if (SoundDataLevels.hasOwnProperty(level)) {
+        datasets.push({
+          label: level,
+          data: SoundDataLevels[level].sounds,
+          fill: true,
+          backgroundColor: signalColorMapping[level],
+          borderColor: signalColorMapping[level],
+          borderWidth: 2,
+          cubicInterpolationMode: 'monotone' // Add this property for smooth curve
+        });
+      }
+    }
+
+    const SoundData = {
+      labels: labels,
+      datasets: datasets
+    };
+
+    if (chartArea) {
+      chartArea.destroy();
+    }
+
+    chartArea = new Chart(ctxArea, {
+      type: 'line',
+      data: SoundData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1000,
+          easing: 'easeOutBounce',
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'LED Signals over Time',
+            color: 'white',
+            font: {
+              size: 20,
+              family: 'Cloud'
+            }
+          },
+          legend: {
+            labels: {
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+        },
+        interaction: {
+          intersect: false,
+          mode: 'nearest',
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Time',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 10,
+                family: 'Cloud'
+              }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            title: {
+              display: true,
+              text: 'LED Signal',
+              color: '#FFA500',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 15,
+                family: 'Cloud'
+              }
+            },
+          }
+        }
+      }
+    });
+  }, (error) => {
+    console.error("Error retrieving data from Firestore: ", error);
+  });
+
+
+// Card Header Counts
+  const totalQuietElement = document.getElementById('totalQuiet');
+  const totalNormalElement = document.getElementById('totalNormal');
+  const totalModerateElement = document.getElementById('totalModerate');
+  const totalHighElement = document.getElementById('totalHigh');
+  
+  function updateCardContents(totalQuiet, totalNormal, totalModerate, totalHigh) {
+    totalQuietElement.textContent = totalQuiet;
+    totalNormalElement.textContent = totalNormal;
+    totalModerateElement.textContent = totalModerate;
+    totalHighElement.textContent = totalHigh;
+  }
+  
+  db2.collection('SoundData').onSnapshot((querySnapshot) => {
+    let totalQuiet = 0;
+    let totalNormal = 0;
+    let totalModerate = 0;
+    let totalHigh = 0;
+  
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const level = data["Level"];
+      switch (level) {
+        case "Quiet":
+          totalQuiet++;
+          break;
+        case "Normal":
+          totalNormal++;
+          break;
+        case "Moderate":
+          totalModerate++;
+          break;
+        case "High":
+          totalHigh++;
+          break;
+      }
+    });
+  
+    updateCardContents(totalQuiet, totalNormal, totalModerate, totalHigh);
+  }, (error) => {
+    console.error("Error retrieving data from Firestore: ", error);
+  });  
+
+// Data Table
+    function updateSuccess() {
+      Swal.fire({
+        title: "Success",
+        text: "Record updated successfully",
+        icon: "success",
+      });
+    }
+
+    function updateError(errorMessage) {
+      Swal.fire({
+        title: "Error",
+        text: `There was an error updating the record: ${errorMessage}`,
+        icon: "error",
+      });
+    }
+
+    // Get the data from Firestore and add it to the DataTable
+    db2.collection("SoundData")
+      .orderBy("Timestamp", "desc")
+      .onSnapshot(
+        (querySnapshot) => {
+          let counter = 1; // initialize counter variable
+          let updateCount = 0; // initialize update counter 
+          const table = $('#myTable').DataTable(); // cache DataTable instance
+          table.clear(); // clear existing data in the table
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const timestamp = data["Timestamp"].toDate();
+            const date = timestamp.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const time = timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            const formattedTimestamp = `${date} at ${time} UTC+8`; 
+
+            // Edit Button             
+            const editButton = `<button type="button" class="btn btn-warning btn-sm edit" style=" background: linear-gradient(to right, #FFCF07, #FFA80F);" data-id="${doc.id}-edit" data-sound="${data['Sound']}" data-level="${data['Level']}" data-ledColor="${data['LedColor']}"><i class="fas fa-pencil-alt"></i> Edit</button>`;
+            // Delete Button
+            const deleteButton = `<button type="button" class="btn btn-danger btn-sm delete" style=" background: linear-gradient(to right, #EA4444, #FF0000);" data-id="${doc.id}-delete"><i class="fas fa-trash-alt"></i> Delete</button>`;
+
+            // Add event listener for update button
+            $(document).off('click', '#update-button').on('click', '#update-button', function () {
+              const docId = $(this).data('id');
+              const sound = $('#soundInput').val();
+              const level = $('#levelInput').val();
+              const ledColor = $('#ledColorInput').val();
+              //const dateTime = ($('#CurrentTimestamp').val());
+              const newData = {
+                'Sound': sound,
+                'Level': level,
+                'LedColor': ledColor,
+                //'Timestamp': timestamp // Fix: can't update time yet will fix soon
+              };
+              console.log('Updating docId:', docId); // Check if Document ID matches with docID
+              db2.collection("SoundData").doc(docId).update(newData) // update only the specific document
+                .then(() => {
+                  console.log("update success");
+                  $('#edit-modal').modal('hide');
+                  updateSuccess();
+                  $(this).off('click'); // Remove event listener after update is completed
+                })
+                .catch((error) => {
+                  console.error("Error updating record: ", error);
+                  console.log("Error message: ", error.message);
+                  updateError(error.message);
+                });
+            });
+
+
+            // Add event listener for edit button
+            $(document).on('click', '.edit', function () {
+              if ($(this).data('id') === `${doc.id}-edit`) {
+                console.log(`Editing document with ID: ${doc.id}`); // add this line
+                const docId = $(this).data('id').replace('-edit', '');
+                const sound = $(this).data('sound');
+                const level = $(this).data('level');
+                const ledColor = $(this).data('ledcolor');
+                //const timestamp = $(this).data('timestamp');
+                // Pass data to edit form and display it
+                $('#soundInput').val(sound);
+                $('#levelInput').val(level);
+                $('#ledColorInput').val(ledColor);
+                //const date = timestamp.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                //const time = timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                //$('#CurrentTimestamp').val(`${date} ${time}`);
+                $('#edit-modal').modal('show');
+                $('#update-button').data('id', docId);
+              }
+            });
+
+            // Add event listener for delete button
+            $(document).on('click', '.delete', function () {
+              if ($(this).data('id') === `${doc.id}-delete`) {
+                Swal.fire({
+                  title: "Are you sure?",
+                  text: `Do you really want to delete  Sound dB ${data["Sound"]}?`,
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: 'red',
+                  cancelButtonColor: 'orange',
+                  confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    db2.collection("SoundData").doc(doc.id).delete()
+                      .then(() => {
+                        console.log("Successful Delete")
+                        Swal.fire({
+                          title: "Deleted!",
+                          text: `The record for Sound dB ${data["Sound"]} has been deleted`,
+                          icon: "success",
+                        });
+                        table.row($(this).closest('tr')).remove().draw(); // remove row from DataTable
+                      })
+                      .catch((error) => {
+                        console.error("Error removing record: ", error);
+                        Swal.fire({
+                          title: "Error",
+                          text: "There was an error removing the record.",
+                          icon: "error",
+                        });
+                      });
+                  }
+                });
+              }
+            });
+
+            // Displays the Data to the Tables
+            const ledColorStyle = `style="color: ${data["LedColor"].toLowerCase()};"`;
+            table.row.add([
+            counter++,
+            data["Sound"],
+            data["Level"],
+            `<span ${ledColorStyle}>${data["LedColor"]}</span>`,
+            `${formattedTimestamp}`,
+            `${editButton} ${deleteButton}`
+            ]);
+          });
+          table.draw(); // refresh the table with new data
+        },
+        (error) => {
+          console.log(`Error getting documents: ${error}`);
+        }
+      );
+
+
+
+    // <----- ADD MODAL -----> 
+
+    // Get the add modal element from the DOM
+    const addModal = document.getElementById("add-modal");
+
+    // Get the input fields and buttons from the add modal
+    const addSoundInput = addModal.querySelector("#Sound");
+    const addLevelInput = addModal.querySelector("#Level");
+    const addLedcolorInput = addModal.querySelector("#LedColor");
+    const addTimestampInput = addModal.querySelector("#Timestamp");
+    const addButton = addModal.querySelector("#add-button");
+    const cancelButton = addModal.querySelector("#cancel-button");
+
+    // Add event listener to the add button
+    addButton.addEventListener("click", () => {
+      const Sound = addSoundInput.value.trim();
+      const Level = addLevelInput.value.trim();
+      const LedColor = addLedcolorInput.value.trim();
+      const Timestamp = new Date(addTimestampInput.value.trim());
+
+      // Check if any of the input fields are blank
+      if (!Sound || !Level || !LedColor || !Timestamp) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Please Fill Out All The Fields"
+        });
+        return;
+      }
+
+      // Add the data to Firestore
+      addDoc(collection(db, "SoundData"), {
+        "Sound": Sound,
+        "Level": Level,
+        "LedColor": LedColor,
+        "Timestamp": Timestamp
+      })
+        .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch((error) => {
+          console.error("Error adding document: ", error);
+        });
+
+      // Reset the input fields
+      addSoundInput.value = "";
+      addLevelInput.value = "";
+      addLedcolorInput.value = "";
+      addTimestampInput.value = "";
+
+      function hideAddModal() {
+        const addModal = new bootstrap.Modal(document.querySelector("add-modal"));
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+
+        // Hide the modal
+        addModal.hide();
+
+        // Remove the backdrop
+        modalBackdrop.parentNode.removeChild(modalBackdrop);
+      }
+
+      // Show a success message
+      Swal.fire({
+        icon: "success",
+        title: "Data Added Successfully",
+        text: "You can either close this modal or add more data"
+      });
+    });
+
+    // Add event listener to the add modal to reset the input fields
+    addModal.addEventListener("hidden.bs.modal", () => {
+      addSoundInput.value = "";
+      addLevelInput.value = "";
+      addLedcolorInput.value = "";
+      addTimestampInput.value = "";
+    });
+
+    //----- Logout code start	  
+    document.getElementById("logout2").addEventListener("click", function () {
+      console.log('Logging out...');
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged Out Successfully',
+      });
+      setTimeout(function () {
+        window.location.href = "index.html";
+        window.close(); // Closes the current tab
+      }, 2000);
+    });
+
+  </script>
+
+  <!-- Data Table Show Entries -->
+  <script>
+    $('#myTable').dataTable({
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "columnDefs": [
+            { "width": "5%", "targets": 0 }, // No
+            { "width": "13%", "targets": 1 }, // Sound
+            { "width": "13%", "targets": 2 }, // Level Lvl
+            { "width": "13%", "targets": 3 }, // LedColor Lvl
+            { "width": "33%", "targets": 4 }, // Timestamp Lvl
+            { "width": "25%", "targets": 5 }, // Action
+        ],
+        "columns": [
+            { "className": "text-center" }, // No
+            { "className": "text-center" }, // Sound
+            { "className": "text-center" }, // Level Lvl
+            { "className": "text-center" }, // LedColor Lvl
+            { "className": "text-center" }, // Timestamp Lvl
+            { "className": "text-center" }, // Action
+        ]
+    });
+
+    window.onload = function() {
+    //----- Logout code start
+    const signOutLink = document.getElementById("signOutLink");
+
+    if(signOutLink) {
+        signOutLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                console.log('Sign-out successful.');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logged Out Successfully',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didClose: () => {
+                        // After the alert, redirect to login
+                        window.location.href = "login.html";
+                    }
+                });
+            }).catch((error) => {
+                // An error happened.
+                console.log('An error happened.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'An Error Has Occured',
+                    text: '' + error,
+                });
+            });
+        });
+    }
+};
+
+  
+
+// // Check if the user is authenticated on the "start.html" page
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     // User is authenticated
+//     console.log(user);
+//     // Retrieve the user's authentication session from local storage
+//     const storedUser = JSON.parse(localStorage.getItem('user'));
+//     if (storedUser && user.uid === storedUser.uid) {
+//       // Authentication session is valid, continue with the page's logic
+//       // ...
+//     } else {
+//       // Authentication session is invalid, redirect to the login page
+//       window.location.href = "signform.html";
+//     }
+//   } else {
+//     // User is not authenticated, redirect to the login page
+//     window.location.href = "signform.html";
+//   }
+// });
+// //----- End
+
+  </script>
+</body>
+</html>
