@@ -259,7 +259,7 @@ let chartLine;
 
 db2.collection('SoundData')
   .orderBy('Timestamp', 'desc')
-  .limit(30)
+  .limit(10)
   .onSnapshot((querySnapshot) => {
     const labels = [];
     const SoundDataLevels = {};
@@ -915,7 +915,7 @@ let chartArea;
 
 db2.collection('SoundData')
   .orderBy('Timestamp', 'desc')
-  .limit(30)
+  .limit(10)
   .onSnapshot((querySnapshot) => {
     const labels = [];
     const SoundDataLevels = {};
