@@ -2,6 +2,9 @@
 
 noiSENSOR is a web application designed to monitor noise levels and provide warnings when the noise exceeds a predefined threshold. This README file provides detailed instructions on how to run the noiSENSOR application.
 
+## Demo
+Refer to this link for live demonstartion of the web application: https://noise-level-bc62c.web.app/
+
 ## Prerequisites
 
 Before running the Noisensor application, ensure that you have the following prerequisites installed on your system:
